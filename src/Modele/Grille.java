@@ -6,6 +6,8 @@ package Modele;/*
 
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * @author eric.duchene
@@ -48,13 +50,29 @@ public class Grille {
                 }
             }
         }
-        if(cpt==0) return false;
-        else return true;
+        if (cpt == 0) return false;
+        Collections.shuffle(vide);
+        double nb = Math.random();
+        if (nb >= 5) {
+            grille[vide.get(0).ligne][vide.get(0).colonne].valeur = 4;
+        } else grille[vide.get(0).ligne][vide.get(0).colonne].valeur = 2;
+
+        return true;
 
     }
 
+
     public void pousserGauche() {
-        //a coder
+        ArrayList<Case> row = new ArrayList<>();
+        for (int i = 0; i < this.taille; i++) {
+            for (int j = 1; j < this.taille; j++) {
+                if(grille[i][j-1].valeur==grille[i][j].valeur)
+                {
+                    grille[i][j-1].valeur+=grille[i][j].valeur;
+                    grille[i][j].valeur=0;
+                }
+            }
+        }
     }
 
     public void pousserHaut() {
@@ -74,8 +92,7 @@ public class Grille {
     }
 
     public Case getCase(int i, int j) {
-        //a modifier
-        return null;
+        return grille[i][j];
     }
 
     public String toString() {
