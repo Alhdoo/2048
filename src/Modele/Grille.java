@@ -6,7 +6,6 @@ package Modele;/*
 
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 /**
@@ -43,20 +42,21 @@ public class Grille {
         int cpt = 0;
         for (int i = 0; i < this.taille; i++) {
             for (int j = 0; j < this.taille; j++) {
-                if (grille[i][j].valeur == 0) ;
+                if (grille[i][j].valeur == 0)
                 {
                     vide.add(grille[i][j]);
                     cpt++;
                 }
             }
         }
-        if (cpt == 0) return false;
+
         Collections.shuffle(vide);
         double nb = Math.random();
         if (nb > 0.5) {
             grille[vide.get(0).ligne][vide.get(0).colonne].valeur = 4;
         } else grille[vide.get(0).ligne][vide.get(0).colonne].valeur = 2;
-
+        vide.clear();
+        if (cpt == 0) return false;
         return true;
 
     }
@@ -65,23 +65,49 @@ public class Grille {
     public void pousserGauche() {
         boolean test = true;
         // fusion des cases
+
+        // deplacement des cases
+        while (test != false) {
+            test = false;
+            for (int i = 0; i < this.taille; i++) {
+                for (int j = 1; j < this.taille; j++) {
+                    if (grille[i][j - 1].valeur == 0 && grille[i][j].valeur != 0) {
+                        grille[i][j - 1].valeur = grille[i][j].valeur;
+                        grille[i][j].valeur = 0;
+                        test = true;
+                    }
+                }
+            }
+        }
         for (int i = 0; i < this.taille; i++) {
             for (int j = 1; j < this.taille; j++) {
-                if(grille[i][j-1].valeur==grille[i][j].valeur)
-                {
-                    grille[i][j-1].valeur+=grille[i][j].valeur;
-                    grille[i][j].valeur=0;
+                if (grille[i][j - 1].valeur == grille[i][j].valeur) {
+                    grille[i][j - 1].valeur += grille[i][j].valeur;
+                    grille[i][j].valeur = 0;
+                }
+            }
+        }
+    }
+
+    public void pousserHaut() {
+        boolean test = true;
+        // fusion des cases
+        for (int i = 1; i < this.taille; i++) {
+            for (int j = 0; j < this.taille; j++) {
+                if (grille[i - 1][j].valeur == grille[i][j].valeur) {
+                    grille[i - 1][j].valeur += grille[i][j].valeur;
+                    grille[i][j].valeur = 0;
                 }
             }
         }
         // deplacement des cases
-        while(test==true) {
-            test=false;
-            for (int i = 0; i < this.taille; i++) {
-                for (int j = 1; j < this.taille; j++) {
-                    if (grille[i][j - 1].valeur == 0) {
-                        grille[i][j - 1].valeur=grille[i][j].valeur;
-                        grille[i][j].valeur=0;
+        while (test) {
+            test = false;
+            for (int i = 1; i < this.taille; i++) {
+                for (int j = 0; j < this.taille; j++) {
+                    if (grille[i - 1][j].valeur == 0 && grille[i][j].valeur != 0) {
+                        grille[i - 1][j].valeur = grille[i][j].valeur;
+                        grille[i][j].valeur = 0;
                         test = true;
                     }
                 }
@@ -89,12 +115,30 @@ public class Grille {
         }
     }
 
-    public void pousserHaut() {
-
-    }
-
     public void pousserBas() {
-        //a coder
+        boolean test = true;
+        // fusion des cases
+        for (int i = 1; i < this.taille; i++) {
+            for (int j = 1; j < this.taille; j++) {
+                if (grille[i][j].valeur == grille[i - 1][j - 1].valeur) {
+                    grille[i][j].valeur += grille[i - 1][j - 1].valeur;
+                    grille[i - 1][j - 1].valeur = 0;
+                }
+            }
+        }
+        // deplacement des cases
+        while (test) {
+            test = false;
+            for (int i = 1; i < this.taille; i++) {
+                for (int j = 1; j < this.taille; j++) {
+                    if (grille[i][j].valeur == 0 && grille[i - 1][j - 1].valeur != 0) {
+                        grille[i][j].valeur = grille[i - 1][j - 1].valeur;
+                        grille[i - 1][j - 1].valeur = 0;
+                        test = true;
+                    }
+                }
+            }
+        }
     }
 
     public void pousserDroite() {
@@ -102,21 +146,20 @@ public class Grille {
         // fusion des cases
         for (int i = 1; i < this.taille; i++) {
             for (int j = 0; j < this.taille; j++) {
-                if(grille[i-1][j].valeur==grille[i][j].valeur)
-                {
-                    grille[i-1][j].valeur+=grille[i][j].valeur;
-                    grille[i][j].valeur=0;
+                if (grille[i - 1][j].valeur == grille[i][j].valeur) {
+                    grille[i - 1][j].valeur += grille[i][j].valeur;
+                    grille[i][j].valeur = 0;
                 }
             }
         }
         // deplacement des cases
-        while(test==true) {
-            test=false;
+        while (test != false) {
+            test = false;
             for (int i = 1; i < this.taille; i++) {
                 for (int j = 0; j < this.taille; j++) {
-                    if (grille[i-1][j].valeur == 0) {
-                        grille[i-1][j].valeur=grille[i][j].valeur;
-                        grille[i][j].valeur=0;
+                    if (grille[i - 1][j].valeur == 0 && grille[i][j].valeur != 0) {
+                        grille[i - 1][j].valeur = grille[i][j].valeur;
+                        grille[i][j].valeur = 0;
                         test = true;
                     }
                 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e6dbba14-32d3-493d-8e10-e2ec63528a29" name="Changes" comment="fusion pour le pousser gauche finie">
+    <list default="true" id="e6dbba14-32d3-493d-8e10-e2ec63528a29" name="Changes" comment="affichage console et ajoutalea fonctionne pousser gauche et pousser droit fais mais pas tester">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Modele/Grille.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modele/Grille.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pkg2048/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pkg2048/Main.java" afterDir="false" />
@@ -71,7 +71,7 @@
       <workItem from="1653654672993" duration="10077000" />
       <workItem from="1653687556033" duration="1727000" />
       <workItem from="1653719918790" duration="447000" />
-      <workItem from="1653758721218" duration="2883000" />
+      <workItem from="1653758721218" duration="10480000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1653665820926</created>
@@ -87,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653671084918</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="affichage console et ajoutalea fonctionne pousser gauche et pousser droit fais mais pas tester">
+      <created>1653764561085</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1653764561085</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,6 +114,23 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first push" />
     <MESSAGE value="fusion pour le pousser gauche finie" />
-    <option name="LAST_COMMIT_MESSAGE" value="fusion pour le pousser gauche finie" />
+    <MESSAGE value="affichage console et ajoutalea fonctionne pousser gauche et pousser droit fais mais pas tester" />
+    <option name="LAST_COMMIT_MESSAGE" value="affichage console et ajoutalea fonctionne pousser gauche et pousser droit fais mais pas tester" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/pkg2048/Main.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/2048$pkg2048_Main.ic" NAME="pkg2048.Main Coverage Results" MODIFIED="1653771489624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>pkg2048.*</FILTER>
+    </SUITE>
   </component>
 </project>

@@ -51,8 +51,11 @@ public class Main {
         grille.ajoutElementAlea();
         grille.ajoutElementAlea();
         grille.ajoutElementAlea();
-        System.out.println(grille.toString());
+        grille.ajoutElementAlea();
+        grille.ajoutElementAlea();
+        grille.ajoutElementAlea();
 
+        System.out.printf(grille.toString());
     }
 
 }
