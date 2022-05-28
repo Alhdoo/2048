@@ -53,7 +53,7 @@ public class Grille {
         if (cpt == 0) return false;
         Collections.shuffle(vide);
         double nb = Math.random();
-        if (nb >= 5) {
+        if (nb > 0.5) {
             grille[vide.get(0).ligne][vide.get(0).colonne].valeur = 4;
         } else grille[vide.get(0).ligne][vide.get(0).colonne].valeur = 2;
 
@@ -63,7 +63,8 @@ public class Grille {
 
 
     public void pousserGauche() {
-        ArrayList<Case> row = new ArrayList<>();
+        boolean test = true;
+        // fusion des cases
         for (int i = 0; i < this.taille; i++) {
             for (int j = 1; j < this.taille; j++) {
                 if(grille[i][j-1].valeur==grille[i][j].valeur)
@@ -73,10 +74,23 @@ public class Grille {
                 }
             }
         }
+        // deplacement des cases
+        while(test==true) {
+            test=false;
+            for (int i = 0; i < this.taille; i++) {
+                for (int j = 1; j < this.taille; j++) {
+                    if (grille[i][j - 1].valeur == 0) {
+                        grille[i][j - 1].valeur=grille[i][j].valeur;
+                        grille[i][j].valeur=0;
+                        test = true;
+                    }
+                }
+            }
+        }
     }
 
     public void pousserHaut() {
-        //a coder
+
     }
 
     public void pousserBas() {
@@ -84,7 +98,30 @@ public class Grille {
     }
 
     public void pousserDroite() {
-        //a coder
+        boolean test = true;
+        // fusion des cases
+        for (int i = 1; i < this.taille; i++) {
+            for (int j = 0; j < this.taille; j++) {
+                if(grille[i-1][j].valeur==grille[i][j].valeur)
+                {
+                    grille[i-1][j].valeur+=grille[i][j].valeur;
+                    grille[i][j].valeur=0;
+                }
+            }
+        }
+        // deplacement des cases
+        while(test==true) {
+            test=false;
+            for (int i = 1; i < this.taille; i++) {
+                for (int j = 0; j < this.taille; j++) {
+                    if (grille[i-1][j].valeur == 0) {
+                        grille[i-1][j].valeur=grille[i][j].valeur;
+                        grille[i][j].valeur=0;
+                        test = true;
+                    }
+                }
+            }
+        }
     }
 
     public int getTaille() {
@@ -95,8 +132,15 @@ public class Grille {
         return grille[i][j];
     }
 
+    @Override
     public String toString() {
-        //a modifier
-        return "";
+        String concat = new String();
+        for (int i = 0; i < this.taille; i++) {
+            concat += "\n";
+            for (int j = 0; j < this.taille; j++) {
+                concat += "|" + grille[i][j].valeur + "|";
+            }
+        }
+        return concat;
     }
 }

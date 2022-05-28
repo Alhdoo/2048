@@ -24,7 +24,7 @@ public class Main {
         // TODO code application logic here
         Grille grille=new Grille(4);
         
-        System.out.println(grille);
+       /* System.out.println(grille);
         
         grille.pousserGauche();
         grille.ajoutElementAlea();
@@ -44,8 +44,14 @@ public class Main {
         
         grille.pousserBas();
         grille.ajoutElementAlea();
-        System.out.println("bas\n"+grille);
-        
+        System.out.println("bas\n"+grille);*/
+
+        grille.ajoutElementAlea();
+        grille.ajoutElementAlea();
+        grille.ajoutElementAlea();
+        grille.ajoutElementAlea();
+        grille.ajoutElementAlea();
+        System.out.println(grille.toString());
 
     }
 
