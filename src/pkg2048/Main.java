@@ -54,7 +54,9 @@ public class Main {
         grille.ajoutElementAlea();
         grille.ajoutElementAlea();
         grille.ajoutElementAlea();
-
+        System.out.printf(grille.toString());
+        grille.pousserBas();
+        System.out.println("\n");
         System.out.printf(grille.toString());
     }
 

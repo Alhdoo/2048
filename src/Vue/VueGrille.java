@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package Vue;
+
 import Modele.*;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -17,27 +19,36 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author eric.duchene
  */
 public class VueGrille extends JComponent {
     Grille grille;
     int tailleCase;
-    
-    public VueGrille(Grille g){
-        // a coder
+
+    public VueGrille(Grille g) {
+        this.grille = g;
     }
-    
-    public static Color getColor(int valeur){    
-        //a modifier
+
+    public static Color getColor(int valeur) {
+        switch (valeur) {
+            case 2:
+                return Color.lightGray;
+            case 4:
+                return Color.gray;
+            case 8:
+                return Color.pink;
+            case 16:
+                return Color.orange;
+
+        }
         return null;
     }
-    
+
     @Override
     protected void paintComponent(Graphics gra) {
         // a coder
     }
-    
+
     @Override
     public Dimension getPreferredSize() {
         //a modifier
@@ -45,5 +56,4 @@ public class VueGrille extends JComponent {
     }
 
 
-   
 }

@@ -64,8 +64,6 @@ public class Grille {
 
     public void pousserGauche() {
         boolean test = true;
-        // fusion des cases
-
         // deplacement des cases
         while (test != false) {
             test = false;
@@ -79,6 +77,7 @@ public class Grille {
                 }
             }
         }
+        // fusion des cases
         for (int i = 0; i < this.taille; i++) {
             for (int j = 1; j < this.taille; j++) {
                 if (grille[i][j - 1].valeur == grille[i][j].valeur) {
@@ -91,15 +90,6 @@ public class Grille {
 
     public void pousserHaut() {
         boolean test = true;
-        // fusion des cases
-        for (int i = 1; i < this.taille; i++) {
-            for (int j = 0; j < this.taille; j++) {
-                if (grille[i - 1][j].valeur == grille[i][j].valeur) {
-                    grille[i - 1][j].valeur += grille[i][j].valeur;
-                    grille[i][j].valeur = 0;
-                }
-            }
-        }
         // deplacement des cases
         while (test) {
             test = false;
@@ -110,6 +100,15 @@ public class Grille {
                         grille[i][j].valeur = 0;
                         test = true;
                     }
+                }
+            }
+        }
+        // fusion des cases
+        for (int i = 1; i < this.taille; i++) {
+            for (int j = 0; j < this.taille; j++) {
+                if (grille[i - 1][j].valeur == grille[i][j].valeur) {
+                    grille[i - 1][j].valeur += grille[i][j].valeur;
+                    grille[i][j].valeur = 0;
                 }
             }
         }
@@ -117,51 +116,52 @@ public class Grille {
 
     public void pousserBas() {
         boolean test = true;
-        // fusion des cases
-        for (int i = 1; i < this.taille; i++) {
-            for (int j = 1; j < this.taille; j++) {
-                if (grille[i][j].valeur == grille[i - 1][j - 1].valeur) {
-                    grille[i][j].valeur += grille[i - 1][j - 1].valeur;
-                    grille[i - 1][j - 1].valeur = 0;
-                }
-            }
-        }
         // deplacement des cases
         while (test) {
             test = false;
             for (int i = 1; i < this.taille; i++) {
-                for (int j = 1; j < this.taille; j++) {
-                    if (grille[i][j].valeur == 0 && grille[i - 1][j - 1].valeur != 0) {
-                        grille[i][j].valeur = grille[i - 1][j - 1].valeur;
-                        grille[i - 1][j - 1].valeur = 0;
+                for (int j = 0; j < this.taille; j++) {
+                    if (grille[i][j].valeur == 0 && grille[i - 1][j].valeur != 0) {
+                        grille[i][j].valeur = grille[i - 1][j].valeur;
+                        grille[i - 1][j].valeur = 0;
                         test = true;
                     }
                 }
             }
         }
+        // fusion des cases
+        for (int i = 1; i < this.taille; i++) {
+            for (int j = 0; j < this.taille; j++) {
+                if (grille[i][j].valeur == grille[i-1][j].valeur) {
+                    grille[i][j].valeur += grille[i-1][j].valeur;
+                    grille[i-1][j].valeur = 0;
+                }
+            }
+        }
+
     }
 
     public void pousserDroite() {
         boolean test = true;
-        // fusion des cases
-        for (int i = 1; i < this.taille; i++) {
-            for (int j = 0; j < this.taille; j++) {
-                if (grille[i - 1][j].valeur == grille[i][j].valeur) {
-                    grille[i - 1][j].valeur += grille[i][j].valeur;
-                    grille[i][j].valeur = 0;
-                }
-            }
-        }
         // deplacement des cases
         while (test != false) {
             test = false;
-            for (int i = 1; i < this.taille; i++) {
-                for (int j = 0; j < this.taille; j++) {
-                    if (grille[i - 1][j].valeur == 0 && grille[i][j].valeur != 0) {
-                        grille[i - 1][j].valeur = grille[i][j].valeur;
-                        grille[i][j].valeur = 0;
+            for (int i = 0; i < this.taille; i++) {
+                for (int j = 1; j < this.taille; j++) {
+                    if (grille[i][j].valeur == 0 && grille[i][j-1].valeur != 0) {
+                        grille[i][j].valeur = grille[i][j-1].valeur;
+                        grille[i][j-1].valeur = 0;
                         test = true;
                     }
+                }
+            }
+        }
+        // fusion des cases
+        for (int i = 0; i < this.taille; i++) {
+            for (int j = 1; j < this.taille; j++) {
+                if (grille[i][j-1].valeur == grille[i][j].valeur) {
+                    grille[i][j].valeur += grille[i][j-1].valeur;
+                    grille[i][j-1].valeur = 0;
                 }
             }
         }
